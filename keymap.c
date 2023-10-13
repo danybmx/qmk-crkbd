@@ -29,7 +29,6 @@ enum {
     TD_SIPE,
     TD_NARR,
     TD_UNDS,
-    TD_HYPN,
     TD_EQQU
 };
 
@@ -80,12 +79,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 /* }; */
 
 tap_dance_action_t tap_dance_actions[] = {
-    [TD_SEMI] = ACTION_TAP_DANCE_DOUBLE(KC_SCLN, KC_COLN),
-    [TD_SLSH] = ACTION_TAP_DANCE_DOUBLE(KC_SLSH, KC_BSLS),
-    [TD_SIPE] = ACTION_TAP_DANCE_DOUBLE(KC_LSFT, KC_PIPE),
-    [TD_UNDS] = ACTION_TAP_DANCE_DOUBLE(KC_COMM, KC_UNDS)
-    /* [TD_EQQU] = ACTION_TAP_DANCE_DOUBLE(KC_I, KC_EQL), */
-    /* [TD_HYPN] = ACTION_TAP_DANCE_DOUBLE(KC_P, KC_MINS) */
+    // [TD_SEMI] = ACTION_TAP_DANCE_DOUBLE(KC_SCLN, KC_COLN),
+    // [TD_SLSH] = ACTION_TAP_DANCE_DOUBLE(KC_SLSH, KC_BSLS),
+    // [TD_SIPE] = ACTION_TAP_DANCE_DOUBLE(KC_RSFT, KC_PIPE),
+    // [TD_UNDS] = ACTION_TAP_DANCE_DOUBLE(KC_COMM, KC_UNDS),
+    // [TD_HYPN] = ACTION_TAP_DANCE_DOUBLE(KC_LSFT, KC_MINS)
+    // [TD_EQQU] = ACTION_TAP_DANCE_DOUBLE(KC_I, KC_EQL),
 };
 
 #define KC_EURO LSFT(LALT(KC_2))
@@ -97,11 +96,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
        KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-LCTL_T(KC_ESC),   KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                         KC_H,    KC_J,    KC_K,    KC_L, TD(TD_SEMI), KC_QUOT,
+LCTL_T(KC_ESC),   KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                         KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, TD(TD_UNDS),  KC_DOT, TD(TD_SLSH), TD(TD_SIPE),
+      KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_RSFT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          OSL(1),  KC_LGUI,  KC_SPC,     KC_ENT, OSL(MOD_RALT), OSL(2)
+                                          OSL(1),  KC_LGUI,  KC_SPC,     KC_ENT, OSM(MOD_RALT), OSL(2)
                                       //`--------------------------'  `--------------------------'
 
   ),
@@ -112,7 +111,7 @@ LCTL_T(KC_ESC),   KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                     
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LCTL, KC_LGUI, KC_LALT, XXXXXXX, KC_CAPP, XXXXXXX,                      KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT, KC_PMNS, KC_PPLS,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT, KC_SLOK, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+      KC_LSFT, KC_SLOK, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_HOME,  KC_END, KC_COMM,  KC_DOT, KC_UNDS, KC_CAPS,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           _______, KC_LGUI,  KC_SPC,     KC_ENT, KC_RALT,  MO(3)
                                       //`--------------------------'  `--------------------------'
@@ -120,7 +119,7 @@ LCTL_T(KC_ESC),   KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                     
 
     [_SYMBOLS] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_TAB, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,                      KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_BSPC,
+       KC_GRV, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,                      KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LCTL, KC_MINS, KC_PLUS, M_HARRW, KC_EURO,  M_ENHE,                      KC_MINS,  KC_EQL, KC_LBRC, KC_RBRC, KC_BSLS,  KC_GRV,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
